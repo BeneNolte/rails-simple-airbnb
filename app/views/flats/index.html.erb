@@ -1,0 +1,36 @@
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">Navbar</a>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" value="<%= params[:search_bar] %>" name="search_bar" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+
+
+<div class="container">
+  <h1>Flats</h1>
+
+
+      <div class="row">
+        <% @flats.each do |flat| %>
+        <div class="col-4">
+          <div class="card">
+            <img src="https://source.unsplash.com/random/180x100" alt="random">
+            <p>Name: <%= flat.name %></p>
+            <p>Address: <%= flat.address %></p>
+            <p>Description: <%= flat.description %></p>
+            <p>Price per night: <%= flat.price_per_night %></p>
+            <p>Number of guests: <%= flat.number_of_guests %></p>
+            <p><%= link_to 'Show', flat %></p>
+            <p><%= link_to 'Edit', edit_flat_path(flat) %></p>
+            <p><%= link_to 'Destroy', flat, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+
+  <br>
+
+  <%= link_to 'New Flat', new_flat_path %>
+</div>
